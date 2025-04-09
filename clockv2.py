@@ -29,9 +29,9 @@ class PwnClock(plugins.Plugin):
 
         if 'time_format' in self.options:
             self.time_format = self.options['time_format']
-        if 'clock_pos' in self.options:
-            clock_pos = self.options['clock_pos'].split(',')
-            self.time_pos = tuple(int(x.strip()) for x in clock_pos)
+        if 'time_pos' in self.options:
+            time_pos = self.options['time_pos'].split(',')
+            self.time_pos = tuple(int(x.strip()) for x in time_pos)
 
         ui.add_element('date', LabeledValue(color=BLACK, label='', value=self.date_format,
                                                 position=self.date_pos,

@@ -11,7 +11,7 @@ class InternetConnectionPlugin(plugins.Plugin):
     __license__ = 'GPL3'
     __description__ = 'A plugin that displays the Internet connection status on the pwnagotchi display.'
 
-    position = (0, 40)
+    position = (80,0)
 
     def _is_internet_available(self):
         try:
@@ -25,19 +25,19 @@ class InternetConnectionPlugin(plugins.Plugin):
             return False
     
     def on_loaded(self):
-        logging.info("Pwnagotchi Internet-Connection v.1.0.0 loaded.")
+        logging.info("Pwnagotchi Internet-Connection v.2 loaded.")
 
     def on_ui_setup(self, ui):
-        ui.add_element('connection_status', LabeledValue(color=BLACK, label='', value='',
+        ui.add_element('connection_status', LabeledValue(color=BLACK, label='WWW', value='',
                                             position=self.position,
-                                            label_font=fonts.Small, text_font=fonts.Bold))
+                                            label_font=fonts.Bold, text_font=fonts.Medium))
 
     def on_ui_update(self, ui):
         is_connected = self._is_internet_available()
         if is_connected:
-            ui.set('connection_status', 'WWW')
+            ui.set('connection_status', 'C')
         else:
-            ui.set('connection_status', '')
+            ui.set('connection_status', '-')
 
     def on_unload(self, ui):
         with ui._lock:
